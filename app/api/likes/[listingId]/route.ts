@@ -30,7 +30,16 @@ export async function POST(request: Request, { params }: { params: IParams }) {
         throw new Error('Servicio no encontrado')
     }
 
-    let likeIds = [...(listing.likeIds || [])]
+    let likeIds = []
+
+    try {
+
+        let likeIds = [...(listing.likeIds || [])]
+
+    } catch (error) {
+        throw new Error('Algo salió mal')
+    }
+
 
     likeIds.push(curretUser.id)
 
