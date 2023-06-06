@@ -13,6 +13,7 @@ import {
 import HeartButton from "../HeartButton";
 import Button from "../Button";
 import ClientOnly from "../ClientOnly";
+import { AiFillLike } from "react-icons/ai";
 
 interface ListingCardProps {
   data: safeListings;
@@ -33,6 +34,8 @@ const ListingCard: React.FC<ListingCardProps> = ({
 }) => {
   const router = useRouter();
   const { getByValue } = useCountries();
+
+  const nLikes = data.likeIds.length
 
   let titulo = ""
 
@@ -104,8 +107,15 @@ const ListingCard: React.FC<ListingCardProps> = ({
         <div className="font-semibold text-lg">
           {titulo}
         </div>
-        <div className="font-light text-neutral-500">
-          {data.category}
+        <div className="flex justify-between">
+          <div className="font-light text-neutral-500">
+            {data.category}
+          </div>
+          <div className="flex flex-row gap-2">
+            {nLikes}
+            <AiFillLike size={20} />
+          </div>
+
         </div>
         {data.price != 0 && (
           <div className="flex flex-row items-center gap-1">

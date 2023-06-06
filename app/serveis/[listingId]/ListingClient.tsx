@@ -45,7 +45,10 @@ const ListingClient: React.FC<ListingClientProps> = ({
                             user={listing.user}
                             category={category}
                             description={listing.description}
+                            likes={listing.likeIds}
                             locationValue={listing.locationValue}
+                            listing={listing}
+                            currentUser={currentUser}
                         />
                     </div>
                 </div>

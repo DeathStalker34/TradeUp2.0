@@ -20,6 +20,7 @@ model User {
   createdAt      DateTime  @default(now())
   updatedAt      DateTime  @updatedAt
   favoriteIds    String[]  @db.ObjectId
+  likeIds        String[]  @db.ObjectId
 
   conversationIds String[]       @db.ObjectId
   conversations   Conversation[] @relation(fields: [conversationIds], references: [id])
@@ -92,6 +93,7 @@ model Listing {
   locationValue String
   userId        String   @db.ObjectId
   price         Int?
+  likeIds       String[] @db.ObjectId
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
