@@ -123,12 +123,14 @@ const ListingInfo: React.FC<ListingInfoProps> = ({
             <hr />
             <Map center={coordinates} />
             <hr />
+            {currentUser?.id !== user.id && (
+                <Button
+                    label="Contactar con el usuario"
+                    disabled={isLoading}
+                    onClick={handleClick}
+                />
+            )}
 
-            <Button
-                label="Contactar con el usuario"
-                disabled={isLoading}
-                onClick={handleClick}
-            />
         </div>
     );
 }
