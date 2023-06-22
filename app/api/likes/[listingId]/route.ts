@@ -30,27 +30,34 @@ export async function POST(request: Request, { params }: { params: IParams }) {
         throw new Error('Servicio no encontrado')
     }
 
-    let likeIds = []
+    // let likeIds = []
 
-    try {
+    // try {
 
-        let likeIds = [...(listing.likeIds || [])]
+    //     let likeIds = [...(listing.likeIds || [])]
 
-    } catch (error) {
-        throw new Error('Algo salió mal')
-    }
+    // } catch (error) {
+    //     throw new Error('Algo salió mal')
+    // }
 
 
-    likeIds.push(curretUser.id)
+    // likeIds.push(curretUser.id)
+
+    console.log(listing.likeIds)
 
     const updatedListing = await prisma.listing.update({
         where: {
             id: listingId
         },
         data: {
-            likeIds
+            likeIds: {
+                push: curretUser.id
+            }
         }
     })
+
+    console.log(listing.likeIds)
+
 
     return NextResponse.json(updatedListing)
 }
